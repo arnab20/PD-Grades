@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Code Example</title>
+    <style>
+        /* Style for both buttons */
+        .copyButton {
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            border: none; /* Remove borders */
+            padding: 10px 20px; /* Add some padding */
+            font-size: 16px; /* Increase font size */
+            border-radius: 5px; /* Add rounded corners */
+            cursor: pointer; /* Mouse pointer on hover */
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+            margin: 10px 0; /* Add margin between buttons and code blocks */
+        }
+
+        .copyButton:hover {
+            background-color: #45a049; /* Darker green when hovered */
+        }
+
+        .copyButton:active {
+            background-color: #3e8e41; /* Even darker green when clicked */
+        }
+    </style>
+</head>
+<body>
+    <h2>Copy Code to Clipboard</h2>
+
+    <!-- First code block -->
+    <pre><code id="codeToCopy1">
+    function grades() { // Get the total number of roll numbers let totalRoll = parseInt(prompt("Last Roll Number", "Please write the last roll number")); // Helper function to set grades for a specific list of rolls function setGradeForRolls(grade, promptMessage) { let input = prompt(`Roll for ${grade}`, promptMessage); let rolls = input.trim().split(" ").map(Number); // Trim and convert to numbers rolls.forEach(roll => { let target = `MainContent_gvMarksGradeEntry_txtGrade_Obtained_${roll - 1}`; let val = document.querySelector("#" + target); if (val) val.value = grade; // Set the value if the element exists }); } // Set grades for 'O' and 'S' setGradeForRolls("O", "Please write the rolls for O grade using space"); setGradeForRolls("S", "Please write the rolls for S grade using space"); // Assign 'A' grade to all other rolls not marked with 'O' or 'S' for (let h = 0; h < totalRoll; h++) { let target = `MainContent_gvMarksGradeEntry_txtGrade_Obtained_${h}`; let val = document.querySelector("#" + target); if (val && val.value !== "O" && val.value !== "S") { val.value = "A"; } } } grades();
+    </code></pre>
+    <!-- First copy button -->
+    <button class="copyButton" id="copyButton1">Copy Code 1</button>
+
+    <!-- Second code block -->
+    <pre><code id="codeToCopy2">
+    function absent() { let input = prompt("Rolls for absent", "Please write the rolls using space"); let rolls = input.trim().split(" ").map(Number); // Trim and convert input to numbers // Loop through the roll numbers and mark them as absent rolls.forEach(roll => { let targetCheckbox = `MainContent_gvAttendance_chkAttendanceFlag_${roll - 1}`; let studentName = `MainContent_gvAttendance_lblStudentName_${roll - 1}`; let checkbox = document.querySelector("#" + targetCheckbox); let student = document.querySelector("#" + studentName); if (checkbox && student) { console.log(student.textContent); // Log the student name checkbox.checked = false; // Mark the student as absent } }); } absent();
+    </code></pre>
+    <!-- Second copy button -->
+    <button class="copyButton" id="copyButton2">Copy Code 2</button>
+
+    <!-- Message to confirm code is copied -->
+    <p id="copyMessage" style="color: green;"></p>
+
+    <script>
+        // Function to copy specific code to clipboard
+        function copyCode(codeId) {
+            const codeToCopy = document.getElementById(codeId).innerText;
+
+            // Use Clipboard API to copy the text
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(codeToCopy).then(function() {
+                    document.getElementById("copyMessage").textContent = "Code copied to clipboard!";
+                }).catch(function(error) {
+                    console.error("Error copying code: ", error);
+                });
+            } else {
+                // Fallback to execCommand if Clipboard API is unavailable
+                const tempTextArea = document.createElement("textarea");
+                tempTextArea.value = codeToCopy;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                try {
+                    document.execCommand("copy");
+                    document.getElementById("copyMessage").textContent = "Code copied to clipboard!";
+                } catch (err) {
+                    console.error("Fallback: Unable to copy", err);
+                }
+                document.body.removeChild(tempTextArea);
+            }
+        }
+
+        // Add event listeners to both buttons
+        document.getElementById("copyButton1").addEventListener("click", function() {
+            copyCode("codeToCopy1");
+        });
+        document.getElementById("copyButton2").addEventListener("click", function() {
+            copyCode("codeToCopy2");
+        });
+    </script>
+</body>
+</html>
