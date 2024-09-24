@@ -61,6 +61,7 @@
         #copyMessage {
             color: black;
             margin-top: 10px;
+            font-size: 14px;
         }
         
     </style>
@@ -144,7 +145,7 @@ absent();
             // Use Clipboard API to copy the text
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(codeToCopy).then(function() {
-                    document.getElementById("copyMessage").textContent = "Code copy to hogaya!";
+                    document.getElementById("copyMessage").textContent = "Chal jaa, copy hogaya!";
                     setTimeout(() => {document.getElementById("copyMessage").textContent = "";}, 1000);
                 }).catch(function(error) {
                     console.error("Kuch garbar hua hai! ", error);
@@ -158,7 +159,7 @@ absent();
                 try {
                     document.execCommand("copy");
                     document.getElementById("copyMessage").textContent = "Chal jaa, copy hogaya!";
-                    setTimeout(() => {document.getElementById("copyMessage").textContent = "";}, 1000);
+                    setTimeout(() => {document.getElementById("copyMessage").textContent = "";}, 2000);
                 } catch (err) {
                     console.error("Kuch garbar hua hai!", err);
                 }
