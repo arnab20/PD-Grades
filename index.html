@@ -5,34 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gadhe ki tarah kaam mat kar</title>
     <style>
-        /* Style for both buttons */
+        /* Center the body content */
+        body {
+            text-align: center; /* Center text within the body */
+            background-color: #f0f0f0; /* Light gray background */
+            margin: 0;
+            padding: 20px; /* Add some padding around the body */
+        }
+
+        img {
+            max-width: 100%; /* Make the image responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Rounded corners */
+            margin-bottom: 20px; /* Add space below the image */
+        }
+
+        /* Style for the copy buttons */
         .copyButton {
             background-color: #4CAF50; /* Green background */
             color: white; /* White text */
             border: none; /* Remove borders */
-            padding: 10px 20px; /* Add some padding */
-            font-size: 16px; /* Increase font size */
+            padding: 12px 24px; /* Add some padding */
+            font-size: 18px; /* Increase font size */
             border-radius: 5px; /* Add rounded corners */
             cursor: pointer; /* Mouse pointer on hover */
-            transition: background-color 0.3s ease; /* Smooth transition on hover */
-            margin: 10px 0; /* Add margin between buttons and code blocks */
+            transition: background-color 0.3s ease, transform 0.2s; /* Smooth transition */
+            margin: 10px; /* Add margin between buttons */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
         }
 
         .copyButton:hover {
             background-color: #45a049; /* Darker green when hovered */
+            transform: scale(1.05); /* Slightly enlarge button */
         }
 
         .copyButton:active {
             background-color: #3e8e41; /* Even darker green when clicked */
+            transform: scale(0.95); /* Slightly shrink button */
+        }
+
+        code {
+            display: block;
+            padding: 10px;
+            background-color: #f4f4f4; /* Light gray background for code */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 14px; /* Font size for code */
+            margin: 20px auto; /* Center code blocks */
+            max-width: 600px; /* Max width for code blocks */
+            overflow-x: auto; /* Allow horizontal scrolling if necessary */
+            white-space: pre-wrap; /* Maintain white space formatting */
+            text-align: left; /* Left align the code text */
+        }
+
+        /* Style for the copy message */
+        #copyMessage {
+            color: green;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <img src="images/outmd.jpg">
+    <img src="images/outmd.jpg" alt="Shoaib Image">
     <h1>Yeh page SHOAIB ka hai</h1>
     <h3>Grades ko marne ke liye niche wala code ko copy maar</h3>
+    <hr>
     <code id="codeToCopy1">
-    function grades() {
+function grades() {
     // Get the total number of roll numbers
     let totalRoll = parseInt(prompt("Last Roll Number", "Please write the last roll number"));
 
@@ -63,10 +101,12 @@
 
 grades();
     </code>
-    <button id="copyButton1">Button ko daba aur copy maar</button>
-    <br>
-<h3>Attendance ko marne ke liye niche wala code ko copy maar</h3>
-        <code id="codeToCopy2">
+    <hr>
+    <button class="copyButton" id="copyButton1">Button ko daba aur copy maar</button>
+    
+    <h3>Attendance ko marne ke liye niche wala code ko copy maar</h3>
+    <hr>
+    <code id="codeToCopy2">
 function absent() {
     let input = prompt("Rolls for absent", "Please write the rolls using space");
     let rolls = input.trim().split(" ").map(Number); // Trim and convert input to numbers
@@ -87,16 +127,14 @@ function absent() {
 }
 
 absent();
+    </code>
+    <hr>
+    <button class="copyButton" id="copyButton2">Button ko daba aur copy maar</button>
+    <p id="copyMessage"></p>
 
-        </code>
-    <button id="copyButton1">Button ko daba aur copy maar</button>
-    <p id="copyMessage" style="color: green;"></p>
-</body>
     <script>
-        // Grade code copy
-
         // Function to copy code text
-            function copyCode(codeId) {
+        function copyCode(codeId) {
             const codeToCopy = document.getElementById(codeId).innerText;
 
             // Use Clipboard API to copy the text
@@ -129,6 +167,6 @@ absent();
         document.getElementById("copyButton2").addEventListener("click", function() {
             copyCode("codeToCopy2");
         });
-
     </script>
+</body>
 </html>
