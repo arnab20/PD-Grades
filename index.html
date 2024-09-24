@@ -5,30 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gadhe ki tarah kaam mat kar</title>
     <style>
-        /* Ensure the body and html take full height */
+        /* Ensure the body takes full height */
         html, body {
             height: 100%;
             margin: 0;
-        }
-
-        /* Flexbox to center everything */
-        body {
-            display: flex;
-            justify-content: center; /* Horizontal centering */
-            align-items: center; /* Vertical centering */
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            text-align: center; /* Center text within the body */
+            background-color: #f0f0f0; /* Light gray background */
         }
 
         /* Center the container of the content */
         .container {
-            text-align: center; /* Center text inside */
+            position: absolute; /* Use absolute positioning */
+            top: 50%; /* Move to the middle of the page */
+            left: 50%; /* Move to the middle of the page */
+            transform: translate(-50%, -50%); /* Center the container */
             padding: 20px;
-            background-color: white;
+            background-color: white; /* White background for the container */
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow */
+            width: 600px; /* Fixed width */
         }
 
         img {
@@ -61,29 +56,12 @@
         code {
             display: block;
             padding: 10px;
-            background-color: #f4f4f4;
+            background-color: #f4f4f4; /* Light gray background for code */
             border-radius: 5px;
             font-size: 14px;
             overflow-x: auto;
             white-space: pre-wrap;
             text-align: left; /* Ensure code is left-aligned */
-        }
-
-        /* Ensure layout is responsive for smaller devices */
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-                font-size: 14px;
-            }
-
-            button {
-                padding: 8px 15px;
-                font-size: 14px;
-            }
-
-            code {
-                font-size: 12px;
-            }
         }
     </style>
 </head>
