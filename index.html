@@ -59,7 +59,7 @@
         
         /* Style for the copy message */
         #copyMessage {
-            color: green;
+            color: black;
             margin-top: 10px;
         }
         
@@ -145,6 +145,7 @@ absent();
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(codeToCopy).then(function() {
                     document.getElementById("copyMessage").textContent = "Code copy to hogaya!";
+                    setTimeout(() => {document.getElementById("copyMessage").textContent = "";}, 1000);
                 }).catch(function(error) {
                     console.error("Kuch garbar hua hai! ", error);
                 });
@@ -156,7 +157,8 @@ absent();
                 tempTextArea.select();
                 try {
                     document.execCommand("copy");
-                    document.getElementById("copyMessage").textContent = "Code copy to hogaya!";
+                    document.getElementById("copyMessage").textContent = "Chal jaa, copy hogaya!";
+                    setTimeout(() => {document.getElementById("copyMessage").textContent = "";}, 1000);
                 } catch (err) {
                     console.error("Kuch garbar hua hai!", err);
                 }
