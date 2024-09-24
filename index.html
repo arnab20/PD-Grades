@@ -5,28 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gadhe ki tarah kaam mat kar</title>
     <style>
-        /* /Ensure the body takes full height and centers text/ */
-        html, body {
-            height: 100%;
-            margin: 0;
-            text-align: center; /* Center text within the body */
-            background-color: #f0f0f0; /* Light gray background */
-        }
-
-        /* Center all content */
-        body > * {
-            display: block; /* Display each element as a block */
-            margin: 20px auto; /* Center elements with margin */
-            width: 600px; /* Fixed width for content */
-        }
-
-        img {
-            max-width: 100%; /* Make the image responsive */
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 20px; /* Add space below the image */
-        }
-
         /* Style for both buttons */
         .copyButton {
             background-color: #4CAF50; /* Green background */
@@ -47,56 +25,84 @@
         .copyButton:active {
             background-color: #3e8e41; /* Even darker green when clicked */
         }
-
-        code {
-            display: block;
-            padding: 10px;
-            background-color: #f4f4f4; /* Light gray background for code */
-            border-radius: 5px;
-            font-size: 14px;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            text-align: left; /* Ensure code is left-aligned */
-        }
     </style>
 </head>
 <body>
-    <img src="images/outmd.jpg" alt="Shoaib Image">
+    <img src="images/outmd.jpg">
     <h1>Yeh page SHOAIB ka hai</h1>
     <h3>Grades ko marne ke liye niche wala code ko copy maar</h3>
-
-    <!-- First code block -->
-    <hr>
     <code id="codeToCopy1">
-    function grades() { // Get the total number of roll numbers let totalRoll = parseInt(prompt("Last Roll Number", "Please write the last roll number")); // Helper function to set grades for a specific list of rolls function setGradeForRolls(grade, promptMessage) { let input = prompt(`Roll for ${grade}`, promptMessage); let rolls = input.trim().split(" ").map(Number); // Trim and convert to numbers rolls.forEach(roll => { let target = `MainContent_gvMarksGradeEntry_txtGrade_Obtained_${roll - 1}`; let val = document.querySelector("#" + target); if (val) val.value = grade; // Set the value if the element exists }); } // Set grades for 'O' and 'S' setGradeForRolls("O", "Please write the rolls for O grade using space"); setGradeForRolls("S", "Please write the rolls for S grade using space"); // Assign 'A' grade to all other rolls not marked with 'O' or 'S' for (let h = 0; h < totalRoll; h++) { let target = `MainContent_gvMarksGradeEntry_txtGrade_Obtained_${h}`; let val = document.querySelector("#" + target); if (val && val.value !== "O" && val.value !== "S") { val.value = "A"; } } } grades();
+    function grades() {
+    // Get the total number of roll numbers
+    let totalRoll = parseInt(prompt("Last Roll Number", "Please write the last roll number"));
+
+    // Helper function to set grades for a specific list of rolls
+    function setGradeForRolls(grade, promptMessage) {
+        let input = prompt(`Roll for ${grade}`, promptMessage);
+        let rolls = input.trim().split(" ").map(Number); // Trim and convert to numbers
+        rolls.forEach(roll => {
+            let target = `MainContent_gvMarksGradeEntry_txtGrade_Obtained_${roll - 1}`;
+            let val = document.querySelector("#" + target);
+            if (val) val.value = grade; // Set the value if the element exists
+        });
+    }
+
+    // Set grades for 'O' and 'S'
+    setGradeForRolls("O", "Please write the rolls for O grade using space");
+    setGradeForRolls("S", "Please write the rolls for S grade using space");
+
+    // Assign 'A' grade to all other rolls not marked with 'O' or 'S'
+    for (let h = 0; h < totalRoll; h++) {
+        let target = `MainContent_gvMarksGradeEntry_txtGrade_Obtained_${h}`;
+        let val = document.querySelector("#" + target);
+        if (val && val.value !== "O" && val.value !== "S") {
+            val.value = "A";
+        }
+    }
+}
+
+grades();
     </code>
-    <hr>
-    <!-- First copy button -->
-    <button class="copyButton" id="copyButton1">Button ko daba aur copy maar</button>
+    <button id="copyButton1">Button ko daba aur copy maar</button>
+    <br>
+<h3>Attendance ko marne ke liye niche wala code ko copy maar</h3>
+        <code id="codeToCopy2">
+function absent() {
+    let input = prompt("Rolls for absent", "Please write the rolls using space");
+    let rolls = input.trim().split(" ").map(Number); // Trim and convert input to numbers
 
-    <h3>Attendance ko marne ke liye niche wala code ko copy maar</h3>
+    // Loop through the roll numbers and mark them as absent
+    rolls.forEach(roll => {
+        let targetCheckbox = `MainContent_gvAttendance_chkAttendanceFlag_${roll - 1}`;
+        let studentName = `MainContent_gvAttendance_lblStudentName_${roll - 1}`;
 
-    <!-- Second code block -->
-    <hr>
-    <code id="codeToCopy2">
-    function absent() { let input = prompt("Rolls for absent", "Please write the rolls using space"); let rolls = input.trim().split(" ").map(Number); // Trim and convert input to numbers // Loop through the roll numbers and mark them as absent rolls.forEach(roll => { let targetCheckbox = `MainContent_gvAttendance_chkAttendanceFlag_${roll - 1}`; let studentName = `MainContent_gvAttendance_lblStudentName_${roll - 1}`; let checkbox = document.querySelector("#" + targetCheckbox); let student = document.querySelector("#" + studentName); if (checkbox && student) { console.log(student.textContent); // Log the student name checkbox.checked = false; // Mark the student as absent } }); } absent();
-    </code>
-    <hr>
-    <!-- Second copy button -->
-    <button class="copyButton" id="copyButton2">Button ko daba aur copy maar</button>
+        let checkbox = document.querySelector("#" + targetCheckbox);
+        let student = document.querySelector("#" + studentName);
 
-    <!-- Message to confirm code is copied -->
+        if (checkbox && student) {
+            console.log(student.textContent);  // Log the student name
+            checkbox.checked = false;         // Mark the student as absent
+        }
+    });
+}
+
+absent();
+
+        </code>
+    <button id="copyButton1">Button ko daba aur copy maar</button>
     <p id="copyMessage" style="color: green;"></p>
-
+</body>
     <script>
-        // Function to copy specific code to clipboard
-        function copyCode(codeId) {
+        // Grade code copy
+
+        // Function to copy code text
+            function copyCode(codeId) {
             const codeToCopy = document.getElementById(codeId).innerText;
 
             // Use Clipboard API to copy the text
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(codeToCopy).then(function() {
-                    document.getElementById("copyMessage").textContent = "Code copy hogaya!";
+                    document.getElementById("copyMessage").textContent = "Code copy to hogaya!";
                 }).catch(function(error) {
                     console.error("Kuch garbar hua hai! ", error);
                 });
@@ -108,9 +114,9 @@
                 tempTextArea.select();
                 try {
                     document.execCommand("copy");
-                    document.getElementById("copyMessage").textContent = "Code copy hogaya!";
+                    document.getElementById("copyMessage").textContent = "Code copy to hogaya!";
                 } catch (err) {
-                    console.error("Kuch garbar hua hai! ", err);
+                    console.error("Kuch garbar hua hai!", err);
                 }
                 document.body.removeChild(tempTextArea);
             }
@@ -123,6 +129,6 @@
         document.getElementById("copyButton2").addEventListener("click", function() {
             copyCode("codeToCopy2");
         });
+
     </script>
-</body>
 </html>
