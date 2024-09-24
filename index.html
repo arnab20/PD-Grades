@@ -9,7 +9,8 @@
     <img src="images/outmd.jpg">
     <h1>Yeh page SHOAIB ka hai</h1>
     <h3>Grades ko marne ke liye niche wala code ko copy maar</h3>
-    <code>
+    <pre>
+    <code id="grades">
     function grades() {
     // Get the total number of roll numbers
     let totalRoll = parseInt(prompt("Last Roll Number", "Please write the last roll number"));
@@ -41,10 +42,13 @@
 
 grades();
     </code>
+    </pre>
+    <button id="gbutton">Grades ko copy maar</button>
+    <p id="gcopyMessage" style="color: green;"></p>
     <br>
 <h3>Attendance ko marne ke liye niche wala code ko copy maar</h3>
-    <p>
-        <code>
+    <pre>
+        <code id="absent">
 function absent() {
     let input = prompt("Rolls for absent", "Please write the rolls using space");
     let rolls = input.trim().split(" ").map(Number); // Trim and convert input to numbers
@@ -67,6 +71,47 @@ function absent() {
 absent();
 
         </code>
-    </p>
+    </pre>
+    <button id="abutton">Attendance ko copy maar</button>
+    <p id="acopyMessage" style="color: green;"></p>
 </body>
+    <script>
+        // Grade code copy
+
+        // Function to copy code text
+        function gradeIn() {
+            // Get the content of the <code> element
+            const codeToCopy = document.getElementById("grades").innerText;
+
+            // Use Clipboard API to copy the text
+            navigator.clipboard.writeText(codeToCopy).then(function() {
+                const copyMessage = document.getElementById("gcopyMessage");
+                copyMessage.textContent = "Code copied to clipboard!";
+            }).catch(function(error) {
+                console.error("Error copying code: ", error);
+            });
+        }
+
+        // Add event listener to the button
+        document.getElementById("gbutton").addEventListener("click", gradeIn);
+
+
+        //Attandance copy code
+
+        function attdIn() {
+            // Get the content of the <code> element
+            const codeToCopy = document.getElementById("absent").innerText;
+
+            // Use Clipboard API to copy the text
+            navigator.clipboard.writeText(codeToCopy).then(function() {
+                const copyMessage = document.getElementById("acopyMessage");
+                copyMessage.textContent = "Code copied to clipboard!";
+            }).catch(function(error) {
+                console.error("Error copying code: ", error);
+            });
+        }
+
+        // Add event listener to the button
+        document.getElementById("aButton").addEventListener("click", attdIn);
+    </script>
 </html>
