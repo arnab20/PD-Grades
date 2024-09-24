@@ -5,37 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gadhe ki tarah kaam mat kar</title>
     <style>
-        /* Flexbox to center everything */
-        body, html {
+        /* Ensure the body and html take full height */
+        html, body {
             height: 100%;
             margin: 0;
-            display: flex;
-            justify-content: center; /* Horizontal centering */
-            align-items: center;     /* Vertical centering */
-            text-align: center;      /* Center the text */
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* Light background */
         }
 
+        /* Flexbox to center everything */
+        body {
+            display: flex;
+            justify-content: center; /* Horizontal centering */
+            align-items: center; /* Vertical centering */
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Center the container of the content */
         .container {
-            background-color: white;
+            text-align: center; /* Center text inside */
             padding: 20px;
+            background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 600px;
-            width: 100%; /* Responsive width */
+            width: 100%;
         }
 
-        /* Responsive image */
         img {
-            /*max-width: 100%;
-            height: 100%;*/
+            max-width: 100%; /* Make the image responsive */
+            height: auto;
             border-radius: 10px;
-            margin-bottom: 20px;
-            width: 100%;
-            height: 100%;
-            object-fit: fill; /* Stretches the image */
-            display: block;
         }
 
         /* Style for both buttons */
@@ -49,7 +48,6 @@
             cursor: pointer; /* Mouse pointer on hover */
             transition: background-color 0.3s ease; /* Smooth transition on hover */
             margin: 10px 0; /* Add margin between buttons and code blocks */
-            width: 100%; /* Make buttons responsive */
         }
 
         .copyButton:hover {
@@ -62,38 +60,39 @@
 
         code {
             display: block;
-            background-color: #f4f4f4;
             padding: 10px;
+            background-color: #f4f4f4;
             border-radius: 5px;
             font-size: 14px;
-            text-align: left;
             overflow-x: auto;
-            margin-bottom: 10px;
+            white-space: pre-wrap;
+            text-align: left; /* Ensure code is left-aligned */
         }
 
-        /* Responsive media queries for smaller screens */
+        /* Ensure layout is responsive for smaller devices */
         @media (max-width: 600px) {
             .container {
                 padding: 15px;
                 font-size: 14px;
             }
 
-            code {
-                font-size: 12px;
-            }
-
-            .copyButton {
+            button {
                 padding: 8px 15px;
                 font-size: 14px;
+            }
+
+            code {
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="images/outmd.jpg" alt="Responsive Image" style="max-width: 100%; height: auto; display: block;">
+        <img src="images/outmd.jpg" alt="Shoaib Image">
         <h1>Yeh page SHOAIB ka hai</h1>
         <h3>Grades ko marne ke liye niche wala code ko copy maar</h3>
+
         <!-- First code block -->
         <hr>
         <code id="codeToCopy1">
@@ -102,7 +101,9 @@
         <hr>
         <!-- First copy button -->
         <button class="copyButton" id="copyButton1">Button ko daba aur copy maar</button>
+
         <h3>Attendance ko marne ke liye niche wala code ko copy maar</h3>
+
         <!-- Second code block -->
         <hr>
         <code id="codeToCopy2">
