@@ -32,6 +32,7 @@
     <h1>Yeh page SHOAIB ka hai</h1>
     <h3>Grades ko marne ke liye niche wala code ko copy maar</h3>
     <!-- First code block -->
+    <hr>
     <code id="codeToCopy1">
     function grades() { // Get the total number of roll numbers let totalRoll = parseInt(prompt("Last Roll Number", "Please write the last roll number")); // Helper function to set grades for a specific list of rolls function setGradeForRolls(grade, promptMessage) { let input = prompt(`Roll for ${grade}`, promptMessage); let rolls = input.trim().split(" ").map(Number); // Trim and convert to numbers rolls.forEach(roll => { let target = `MainContent_gvMarksGradeEntry_txtGrade_Obtained_${roll - 1}`; let val = document.querySelector("#" + target); if (val) val.value = grade; // Set the value if the element exists }); } // Set grades for 'O' and 'S' setGradeForRolls("O", "Please write the rolls for O grade using space"); setGradeForRolls("S", "Please write the rolls for S grade using space"); // Assign 'A' grade to all other rolls not marked with 'O' or 'S' for (let h = 0; h < totalRoll; h++) { let target = `MainContent_gvMarksGradeEntry_txtGrade_Obtained_${h}`; let val = document.querySelector("#" + target); if (val && val.value !== "O" && val.value !== "S") { val.value = "A"; } } } grades();
     </code>
@@ -40,6 +41,7 @@
     <button class="copyButton" id="copyButton1">Button ko daba aur copy maar</button>
     <h3>Attendance ko marne ke liye niche wala code ko copy maar</h3>
     <!-- Second code block -->
+    <hr>
     <code id="codeToCopy2">
     function absent() { let input = prompt("Rolls for absent", "Please write the rolls using space"); let rolls = input.trim().split(" ").map(Number); // Trim and convert input to numbers // Loop through the roll numbers and mark them as absent rolls.forEach(roll => { let targetCheckbox = `MainContent_gvAttendance_chkAttendanceFlag_${roll - 1}`; let studentName = `MainContent_gvAttendance_lblStudentName_${roll - 1}`; let checkbox = document.querySelector("#" + targetCheckbox); let student = document.querySelector("#" + studentName); if (checkbox && student) { console.log(student.textContent); // Log the student name checkbox.checked = false; // Mark the student as absent } }); } absent();
     </code>
