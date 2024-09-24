@@ -82,9 +82,9 @@ absent();
             // Use Clipboard API to copy the text
             navigator.clipboard.writeText(codeToCopy).then(function() {
                 const copyMessage = document.getElementById("gcopyMessage");
-                copyMessage.textContent = "Code copied to clipboard!";
+                copyMessage.textContent = "Copy ho gaya!";
             }).catch(function(error) {
-                console.error("Error copying code: ", error);
+                console.error("Kuch garbar hua hai! ", error);
             });
         }
 
@@ -101,9 +101,9 @@ absent();
             // Use Clipboard API to copy the text
             navigator.clipboard.writeText(codeToCopy).then(function() {
                 const copyMessage = document.getElementById("acopyMessage");
-                copyMessage.textContent = "Code copied to clipboard!";
+                copyMessage.textContent = "Copy ho gaya!";
             }).catch(function(error) {
-                console.error("Error copying code: ", error);
+                console.error("Kuch garbar hua hai! ", error);
             });
         }
 
