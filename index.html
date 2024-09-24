@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Welcome to Shoaib's Page</h1>
-    <p>Copy the code below</p>
+    <h3>Copy the code below for grades</h3>
     <code>
     function grades() {
     // Get the total number of roll numbers
@@ -40,5 +40,33 @@
 
 grades();
     </code>
+    <br>
+    <br>
+<h3>Copy the code below for attendance</h3>
+    <p>
+        <code>
+function absent() {
+    let input = prompt("Rolls for absent", "Please write the rolls using space");
+    let rolls = input.trim().split(" ").map(Number); // Trim and convert input to numbers
+
+    // Loop through the roll numbers and mark them as absent
+    rolls.forEach(roll => {
+        let targetCheckbox = `MainContent_gvAttendance_chkAttendanceFlag_${roll - 1}`;
+        let studentName = `MainContent_gvAttendance_lblStudentName_${roll - 1}`;
+
+        let checkbox = document.querySelector("#" + targetCheckbox);
+        let student = document.querySelector("#" + studentName);
+
+        if (checkbox && student) {
+            console.log(student.textContent);  // Log the student name
+            checkbox.checked = false;         // Mark the student as absent
+        }
+    });
+}
+
+absent();
+
+        </code>
+    </p>
 </body>
 </html>
